@@ -6,7 +6,7 @@ phases:
       nodejs: latest
   pre_build:
     commands:
-      - cd ./my-app
+      - cd ./workshop-cicd
       - echo Installing npm packages...
       - npm install
   build:
