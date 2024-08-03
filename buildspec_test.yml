@@ -13,9 +13,9 @@ phases:
       - echo run tests...
       - CI=true npm run test
 
-  reports:
-    jest_reports:
-      files:
-        - junit.xml
-      file-format: JUNITXML
-      base-directory: workshop-cicd
+reports:
+  jest_reports:
+    files:
+      - junit.xml
+    file-format: JUNITXML
+    base-directory: workshop-cicd
