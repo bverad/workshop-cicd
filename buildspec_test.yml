@@ -18,4 +18,3 @@ reports:
     files:
       - junit.xml
     file-format: JUNITXML
-    base-directory: workshop-cicd
