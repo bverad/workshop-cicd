@@ -23,4 +23,5 @@ phases:
       - printf '[{"name":"workshop-cicd","imageUri":"%s"}]' $IMAGE_REPO_URI:$IMAGE_TAG > $CODEBUILD_SRC_DIR/imagedefinitions.json
 
 artifacts:
-    files: imagedefinitions.json
+  files: 
+    - 'imagedefinitions.json'
