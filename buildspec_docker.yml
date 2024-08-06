@@ -12,16 +12,16 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t workshop-cicd:$IMAGE_TAG .
-      - docker tag workshop-cicd:$IMAGE_TAG $IMAGE_REPO_URI:$IMAGE_TAG
+      - docker build -t $IMAGE_REPO_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION .
+      - docker tag $IMAGE_REPO_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION $IMAGE_REPO_URI:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $IMAGE_REPO_URI:$IMAGE_TAG
-      - echo Writing image definitions file...
+      - docker push $IMAGE_REPO_URI:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - docker push $IMAGE_REPO_URI:latest
       - printf '[{"name":"workshop-cicd","imageUri":"%s"}]' $IMAGE_REPO_URI:$IMAGE_TAG > $CODEBUILD_SRC_DIR/imagedefinitions.json
 
 artifacts:
   files: 
-    - 'imagedefinitions.json'
+    - imagedefinitions.json
