@@ -10,6 +10,7 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $IMAGE_REPO_URI
   build:
     commands:
+      - cd ./my-app
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t workshop-cicd:$IMAGE_TAG .
@@ -19,3 +20,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $IMAGE_REPO_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"workshop-cicd","imageUri":"%s"}]' $IMAGE_REPO_URI:$IMAGE_TAG > $CODEBUILD_SRC_DIR/imagedefinitions.json
+
+artifacts:
+    files: imagedefinitions.json
