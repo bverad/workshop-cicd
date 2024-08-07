@@ -21,7 +21,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $IMAGE_REPO_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"workshop-cicd","imageUri":"%s"}]' $IMAGE_REPO_URI:$IMAGE_TAG > $CODEBUILD_SRC_DIR/imagedefinitions.json
+      - printf '[{"name":"workshop-cicd","imageUri":"%s"}]' $IMAGE_REPO_URI:$IMAGE_TAG > imagedefinitions.json
 
 artifacts:
     files: imagedefinitions.json
