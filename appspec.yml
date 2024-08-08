@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:556730728575:task-definition/prodappstackprodfargateserviceTaskDef53B8FF72:2"
+        LoadBalancerInfo:
+          ContainerName: "workshop-cicd"
+          ContainerPort: 8081

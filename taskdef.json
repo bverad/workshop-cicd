@@ -1,0 +1,24 @@
+{
+    "executionRoleArn": "arn:aws:iam::556730728575:role/prod-app-stack-prodfargateserviceTaskDefTaskRole627-9qAtfZNlt1pe",
+    "containerDefinitions": [
+        {
+            "name": "workshop-cicd",
+            "image": "556730728575.dkr.ecr.us-east-1.amazonaws.com/ecr-stack-workshopcicd8c912315-1edjmkevat5g:latest",
+            "portMappings": [
+                {
+                    "containerPort": 8081,
+                    "hostPort": 8081,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true
+        }
+    ],
+    "family": "prodappstackprodfargateserviceTaskDef53B8FF72",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "512",
+    "memory": "1024"
+}
